@@ -14,22 +14,22 @@ are currently ignored as well.
 
 For example:
 
-	type T struct {
-		F1 string
-		F2 string `sql:"field2"`
-		F3 string `sql:"-"`
-	}
+  type T struct {
+    F1 string
+    F2 string `sql:"field2"`
+    F3 string `sql:"-"`
+  }
 
-	rows, err := db.Query(fmt.Sprintf("SELECT %s FROM tablename", sqlstruct.Columns(T)))
-	...
+  rows, err := db.Query(fmt.Sprintf("SELECT %s FROM tablename", sqlstruct.Columns(T)))
+  ...
 
-	for rows.Next() {
-		var t T
-		err = sqlstruct.Scan(&t, rows)
-		...
-	}
+  for rows.Next() {
+    var t T
+    err = sqlstruct.Scan(&t, rows)
+    ...
+  }
 
-	err = rows.Err() // get any errors encountered during iteration
+  err = rows.Err() // get any errors encountered during iteration
 
 
 */
