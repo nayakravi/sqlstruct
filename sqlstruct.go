@@ -241,13 +241,13 @@ func NullValue(value interface{}) interface{} {
 	switch v.Kind() {
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
 		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		if value.(int64) == 0 {
+		if v.Int() == 0 {
 			return sql.NullInt64{Int64: 0, Valid: false}
 		} else {
 			return value
 		}
 	case reflect.Float32, reflect.Float64:
-		if value.(float64) == 0 {
+		if v.Float() == 0 {
 			return sql.NullFloat64{Float64: 0, Valid: false}
 		} else {
 			return value
